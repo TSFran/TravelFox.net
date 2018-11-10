@@ -1,0 +1,230 @@
+﻿body {
+    width: 100%;
+    height: auto;
+    display: block;
+    position: relative;
+}
+
+body::after {
+    content: '';
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    position: absolute;
+    background: center top no-repeat;
+    background-image: url(../img/background.jpg);
+    background-size: cover;
+    background-attachment: fixed;
+    opacity: 0.20;
+    z-index: -2;
+}
+
+.c-header {
+    color: white;
+    font-family: 'Century Gothic';
+}
+
+.c-header__logo {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100px;
+    background: white;
+}
+
+.c-header__image {
+    width: 60px;
+    height: 50px;
+}
+
+.c-menu-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.c-header__buttons {
+    display: flex;
+    flex-wrap: wrap;
+    width: 40%;
+}
+
+.c-header__purchase-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100px;
+    height: 42px;
+}
+
+.c-header__purchase {
+    position: relative;
+    background-color: #df1b0f;
+    color: white;
+    font-size: 15px;
+    padding: 1px 10px; 
+}
+
+.c-header__purchase::after {
+    position: absolute;
+    content: '';
+    width: 45px;
+    top: 0;
+    bottom: 0;
+    background-color: #df1b0f;
+    z-index: -1;
+    transform: skewX(15deg)
+}
+
+.c-header__login {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 80%;
+    padding: 5px 0px 26px 0px;
+    margin-top: 3px;
+    background-color: #df1b0f;
+    border-radius: 0px 0px 45% 45%;
+}
+
+.c-header__login span {
+    display: block;
+    width: 25px;
+    height: 25px;
+    background: white;
+}
+
+.c-header__login label {
+    font-size: 14px;
+    font-weight: normal;
+    text-align: center;
+}
+
+.c-header__menu {
+    display: flex;
+    flex-wrap: wrap;
+    width: 50%;
+    background-color: #55545a;
+    opacity: 0.8;
+    padding: 8px 0px 8px 8px;
+    border-radius: 0px 0px 0px 40px;
+}
+
+.c-dropdown {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row-reverse;
+}
+
+.c-dropdown div {
+    display: inline-block;
+    border: 1px solid white;
+    border-radius: 10px;
+}
+
+.c-header__menu ul {
+    padding: 0;
+}
+
+.c-toggle {
+    width: 40px;
+    height: 35px;
+    background: #c4c5c9;
+    cursor: pointer;
+}
+
+.c-dropdown--toggle {
+    padding: 0 !important;
+    margin: 18px;
+}
+
+.c-toggle-input {
+    display: none;
+}
+
+.c-toggle-input:checked + .c-header__menu-item-wrap {
+    max-height: 230px;
+    transition: ease-in all .1s;
+    overflow: hidden;
+}
+
+.c-header__menu-item-wrap {
+    max-height: 0px;
+    transition: ease-in all .1s;
+    overflow: hidden;
+}
+
+.c-header__menu-item {
+    list-style: none;
+    padding: 20px;
+}
+
+.c-header__menu-item a {
+    padding: 2px 5px;
+    box-sizing: border-box;
+}
+
+.c-header__menu-item--last {
+    padding-bottom: 10px;
+}
+
+.c-header__menu-item a {
+    color: white;
+}
+
+@media(min-width: 768px) {
+    .c-menu-wrap {
+        width: 70%;
+        justify-content: flex-start;
+    }
+
+    .c-header__buttons {
+        width: auto;
+    }
+
+    .c-header__purchase-wrap {
+        width: 150px;
+    }
+
+    .c-header__purchase::after {
+        width: 0px;
+    }
+
+    .c-header__login {
+        display: none;
+    }
+
+    .c-header__menu {
+        width: auto;
+        border-radius: 0px;
+    }
+
+    .c-toggle {
+        display: none;
+    }
+
+    .c-header__menu-item-wrap {
+        max-height: initial;
+    }
+
+    .c-dropdown,
+    .c-header__menu-item-wrap, 
+    .c-header__menu-item {
+        display: contents;
+    }
+
+    .c-dropdown div {
+        border: none;
+    }
+
+    .c-header__menu-item {
+        margin: 0;
+        padding: 5px;
+    }
+}
