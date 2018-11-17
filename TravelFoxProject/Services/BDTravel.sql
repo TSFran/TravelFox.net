@@ -25,16 +25,19 @@ idRuta int primary key identity(1,1) ,
 inicioRuta varchar(40) NOT NULL,
 finalRuta varchar(40) NOT NULL);
 
+CREATE TABLE Compañia(
+idCompañia int primary key identity (1,1),
+nombre varchar(40) NOT NULL
+)
 
 create table Transporte(
 idTransporte int primary key identity(1,1),
 nroPlaca varchar(10) NOT NULL,
 capacidad varchar(20) NOT NULL,
 tipoTransporte varchar(20) NOT NULL,
-idRuta int foreign key references Ruta(idRuta)
---codCompañia
+idRuta int foreign key references Ruta(idRuta),
+idCompañia int foreign key references Compañia(idCompañia))
 
-)
 create table Conductor(
 idConductor  int primary key identity(1,1),
 nombre varchar(20) NOT NULL,
@@ -46,3 +49,14 @@ fechaNac date NOT NULL)
 create table TransporteConductor(
 idTransporte int foreign key references Transporte (idTransporte),
 idConductor int foreign key references Conductor(idConductor))
+
+CREATE TABLE Departamento(
+idDepartamento int primary key identity(1,1),
+nomDepartamento varchar(40) NOT NULL,
+descripcion varchar(100) NOT NULL)
+
+CREATE TABLE Sucursal(
+idSucursal int primary key identity(1,1),
+nombreSucursal varchar(40) NOT NULL,
+idCompañia int foreign key references Compañia(idCompañia),
+idDepartamento int foreign key references Departamento(idDepartamento))
