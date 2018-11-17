@@ -30,15 +30,15 @@ idCompañia int primary key identity (1,1),
 nombre varchar(40) NOT NULL
 )
 
-create table Transporte(
+CREATE TABLE Transporte(
 idTransporte int primary key identity(1,1),
 nroPlaca varchar(10) NOT NULL,
-capacidad varchar(20) NOT NULL,
+capacidad int NOT NULL,
 tipoTransporte varchar(20) NOT NULL,
 idRuta int foreign key references Ruta(idRuta),
 idCompañia int foreign key references Compañia(idCompañia))
 
-create table Conductor(
+CREATE TABLE Conductor(
 idConductor  int primary key identity(1,1),
 nombre varchar(20) NOT NULL,
 apellido varchar(20) NOT NULL,
@@ -46,7 +46,7 @@ telefono int NOT NULL,
 dni int NOT NULL,
 fechaNac date NOT NULL)
 
-create table TransporteConductor(
+CREATE TABLE TransporteConductor(
 idTransporte int foreign key references Transporte (idTransporte),
 idConductor int foreign key references Conductor(idConductor))
 
