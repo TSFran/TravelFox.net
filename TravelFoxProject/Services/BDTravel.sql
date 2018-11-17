@@ -24,3 +24,25 @@ CREATE TABLE Ruta(
 idRuta int primary key identity(1,1) ,
 inicioRuta varchar(40) NOT NULL,
 finalRuta varchar(40) NOT NULL);
+
+
+create table Transporte(
+idTransporte int primary key identity(1,1),
+nroPlaca varchar(10) NOT NULL,
+capacidad varchar(20) NOT NULL,
+tipoTransporte varchar(20) NOT NULL,
+idRuta int foreign key references Ruta(idRuta)
+--codCompañia
+
+)
+create table Conductor(
+idConductor  int primary key identity(1,1),
+nombre varchar(20) NOT NULL,
+apellido varchar(20) NOT NULL,
+telefono int NOT NULL,
+dni int NOT NULL,
+fechaNac date NOT NULL)
+
+create table TransporteConductor(
+idTransporte int foreign key references Transporte (idTransporte),
+idConductor int foreign key references Conductor(idConductor))
