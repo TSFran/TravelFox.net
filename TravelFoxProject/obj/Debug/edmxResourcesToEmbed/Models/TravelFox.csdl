@@ -1,0 +1,177 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TravelFoxModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Compañia">
+    <Key>
+      <PropertyRef Name="idCompañia" />
+    </Key>
+    <Property Name="idCompañia" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Sucursal" Relationship="Self.FK__Sucursal__idComp__239E4DCF" FromRole="Compañia" ToRole="Sucursal" />
+    <NavigationProperty Name="Transporte" Relationship="Self.FK__Transport__idCom__1A14E395" FromRole="Compañia" ToRole="Transporte" />
+  </EntityType>
+  <EntityType Name="Conductor">
+    <Key>
+      <PropertyRef Name="idConductor" />
+    </Key>
+    <Property Name="idConductor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="apellido" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="telefono" Type="Int32" Nullable="false" />
+    <Property Name="dni" Type="Int32" Nullable="false" />
+    <Property Name="fechaNac" Type="DateTime" Nullable="false" Precision="0" />
+  </EntityType>
+  <EntityType Name="Departamento">
+    <Key>
+      <PropertyRef Name="idDepartamento" />
+    </Key>
+    <Property Name="idDepartamento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nomDepartamento" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Sucursal" Relationship="Self.FK__Sucursal__idDepa__24927208" FromRole="Departamento" ToRole="Sucursal" />
+  </EntityType>
+  <EntityType Name="Detalle_Usuario">
+    <Key>
+      <PropertyRef Name="idDetUsu" />
+    </Key>
+    <Property Name="idDetUsu" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nomUsu" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="apeUsu" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="emailUsu" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="dniUsu" Type="String" MaxLength="8" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="fechaNacUsu" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="Usuario" Relationship="Self.FK__Usuario__idDetUs__1273C1CD" FromRole="Detalle_Usuario" ToRole="Usuario" />
+  </EntityType>
+  <EntityType Name="Ruta">
+    <Key>
+      <PropertyRef Name="idRuta" />
+    </Key>
+    <Property Name="idRuta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="inicioRuta" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="finalRuta" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Transporte" Relationship="Self.FK__Transport__idRut__1920BF5C" FromRole="Ruta" ToRole="Transporte" />
+  </EntityType>
+  <EntityType Name="Sucursal">
+    <Key>
+      <PropertyRef Name="idSucursal" />
+    </Key>
+    <Property Name="idSucursal" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombreSucursal" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="idCompañia" Type="Int32" />
+    <Property Name="idDepartamento" Type="Int32" />
+    <NavigationProperty Name="Compañia" Relationship="Self.FK__Sucursal__idComp__239E4DCF" FromRole="Sucursal" ToRole="Compañia" />
+    <NavigationProperty Name="Departamento" Relationship="Self.FK__Sucursal__idDepa__24927208" FromRole="Sucursal" ToRole="Departamento" />
+  </EntityType>
+  <EntityType Name="Transporte">
+    <Key>
+      <PropertyRef Name="idTransporte" />
+    </Key>
+    <Property Name="idTransporte" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nroPlaca" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="capacidad" Type="Int32" Nullable="false" />
+    <Property Name="tipoTransporte" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="idRuta" Type="Int32" />
+    <Property Name="idCompañia" Type="Int32" />
+    <NavigationProperty Name="Compañia" Relationship="Self.FK__Transport__idCom__1A14E395" FromRole="Transporte" ToRole="Compañia" />
+    <NavigationProperty Name="Ruta" Relationship="Self.FK__Transport__idRut__1920BF5C" FromRole="Transporte" ToRole="Ruta" />
+  </EntityType>
+  <EntityType Name="Usuario">
+    <Key>
+      <PropertyRef Name="idUsuario" />
+    </Key>
+    <Property Name="idUsuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="username" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="password" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="idDetUsu" Type="Int32" />
+    <NavigationProperty Name="Detalle_Usuario" Relationship="Self.FK__Usuario__idDetUs__1273C1CD" FromRole="Usuario" ToRole="Detalle_Usuario" />
+  </EntityType>
+  <Association Name="FK__Sucursal__idComp__239E4DCF">
+    <End Role="Compañia" Type="Self.Compañia" Multiplicity="0..1" />
+    <End Role="Sucursal" Type="Self.Sucursal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Compañia">
+        <PropertyRef Name="idCompañia" />
+      </Principal>
+      <Dependent Role="Sucursal">
+        <PropertyRef Name="idCompañia" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Transport__idCom__1A14E395">
+    <End Role="Compañia" Type="Self.Compañia" Multiplicity="0..1" />
+    <End Role="Transporte" Type="Self.Transporte" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Compañia">
+        <PropertyRef Name="idCompañia" />
+      </Principal>
+      <Dependent Role="Transporte">
+        <PropertyRef Name="idCompañia" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Sucursal__idDepa__24927208">
+    <End Role="Departamento" Type="Self.Departamento" Multiplicity="0..1" />
+    <End Role="Sucursal" Type="Self.Sucursal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Departamento">
+        <PropertyRef Name="idDepartamento" />
+      </Principal>
+      <Dependent Role="Sucursal">
+        <PropertyRef Name="idDepartamento" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Usuario__idDetUs__1273C1CD">
+    <End Role="Detalle_Usuario" Type="Self.Detalle_Usuario" Multiplicity="0..1" />
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Detalle_Usuario">
+        <PropertyRef Name="idDetUsu" />
+      </Principal>
+      <Dependent Role="Usuario">
+        <PropertyRef Name="idDetUsu" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Transport__idRut__1920BF5C">
+    <End Role="Ruta" Type="Self.Ruta" Multiplicity="0..1" />
+    <End Role="Transporte" Type="Self.Transporte" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ruta">
+        <PropertyRef Name="idRuta" />
+      </Principal>
+      <Dependent Role="Transporte">
+        <PropertyRef Name="idRuta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="TravelFoxEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Compañia" EntityType="Self.Compañia" />
+    <EntitySet Name="Conductor" EntityType="Self.Conductor" />
+    <EntitySet Name="Departamento" EntityType="Self.Departamento" />
+    <EntitySet Name="Detalle_Usuario" EntityType="Self.Detalle_Usuario" />
+    <EntitySet Name="Ruta" EntityType="Self.Ruta" />
+    <EntitySet Name="Sucursal" EntityType="Self.Sucursal" />
+    <EntitySet Name="Transporte" EntityType="Self.Transporte" />
+    <EntitySet Name="Usuario" EntityType="Self.Usuario" />
+    <AssociationSet Name="FK__Sucursal__idComp__239E4DCF" Association="Self.FK__Sucursal__idComp__239E4DCF">
+      <End Role="Compañia" EntitySet="Compañia" />
+      <End Role="Sucursal" EntitySet="Sucursal" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Transport__idCom__1A14E395" Association="Self.FK__Transport__idCom__1A14E395">
+      <End Role="Compañia" EntitySet="Compañia" />
+      <End Role="Transporte" EntitySet="Transporte" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Sucursal__idDepa__24927208" Association="Self.FK__Sucursal__idDepa__24927208">
+      <End Role="Departamento" EntitySet="Departamento" />
+      <End Role="Sucursal" EntitySet="Sucursal" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Usuario__idDetUs__1273C1CD" Association="Self.FK__Usuario__idDetUs__1273C1CD">
+      <End Role="Detalle_Usuario" EntitySet="Detalle_Usuario" />
+      <End Role="Usuario" EntitySet="Usuario" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Transport__idRut__1920BF5C" Association="Self.FK__Transport__idRut__1920BF5C">
+      <End Role="Ruta" EntitySet="Ruta" />
+      <End Role="Transporte" EntitySet="Transporte" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

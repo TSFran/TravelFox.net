@@ -1,0 +1,42 @@
+﻿@model TravelFoxProject.Models.Usuario
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+}
+
+    @using (Html.BeginForm("Index", "Login", FormMethod.Post, new { @class="c-login-wrap"}))
+    {
+        @Html.AntiForgeryToken()
+        <div class="c-login">
+            <img src="~/img/logo.png" />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="c-login-group">
+                @Html.LabelFor(model => model.username, htmlAttributes: new { @class = "c-login__label" })
+                <div class="c-login-group__input">
+                    @Html.EditorFor(model => model.username, new { htmlAttributes = new { @class = "c-login__input" } })
+                    @Html.ValidationMessageFor(model => model.username, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="c-login-group">
+                @Html.LabelFor(model => model.password, htmlAttributes: new { @class = "c-login__label" })
+                <div class="c-login-group__input">
+                    @Html.EditorFor(model => model.password, new { htmlAttributes = new { @class = "c-login__input" } })
+                    @Html.ValidationMessageFor(model => model.password, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="c-login-group">
+                @Html.ActionLink("Registrate aquí", "Index", "Home", new { @class = "c-login__register"})
+                <div class="c-login-group__btn">
+                    <input type="submit" value="INGRESA" class="btn c-login__btn" />
+                </div>
+            </div>
+            <label class="c-login__session" style="color: red">@Html.ViewData["Message"]</label>
+        </div>
+    }
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

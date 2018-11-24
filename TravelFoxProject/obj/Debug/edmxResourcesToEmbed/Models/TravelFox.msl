@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="TravelFoxModelStoreContainer" CdmEntityContainer="TravelFoxEntities">
+    <EntitySetMapping Name="Compañia">
+      <EntityTypeMapping TypeName="TravelFoxModel.Compañia">
+        <MappingFragment StoreEntitySet="Compañia">
+          <ScalarProperty Name="idCompañia" ColumnName="idCompañia" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Conductor">
+      <EntityTypeMapping TypeName="TravelFoxModel.Conductor">
+        <MappingFragment StoreEntitySet="Conductor">
+          <ScalarProperty Name="idConductor" ColumnName="idConductor" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="apellido" ColumnName="apellido" />
+          <ScalarProperty Name="telefono" ColumnName="telefono" />
+          <ScalarProperty Name="dni" ColumnName="dni" />
+          <ScalarProperty Name="fechaNac" ColumnName="fechaNac" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Departamento">
+      <EntityTypeMapping TypeName="TravelFoxModel.Departamento">
+        <MappingFragment StoreEntitySet="Departamento">
+          <ScalarProperty Name="idDepartamento" ColumnName="idDepartamento" />
+          <ScalarProperty Name="nomDepartamento" ColumnName="nomDepartamento" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Detalle_Usuario">
+      <EntityTypeMapping TypeName="TravelFoxModel.Detalle_Usuario">
+        <MappingFragment StoreEntitySet="Detalle_Usuario">
+          <ScalarProperty Name="idDetUsu" ColumnName="idDetUsu" />
+          <ScalarProperty Name="nomUsu" ColumnName="nomUsu" />
+          <ScalarProperty Name="apeUsu" ColumnName="apeUsu" />
+          <ScalarProperty Name="emailUsu" ColumnName="emailUsu" />
+          <ScalarProperty Name="dniUsu" ColumnName="dniUsu" />
+          <ScalarProperty Name="fechaNacUsu" ColumnName="fechaNacUsu" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ruta">
+      <EntityTypeMapping TypeName="TravelFoxModel.Ruta">
+        <MappingFragment StoreEntitySet="Ruta">
+          <ScalarProperty Name="idRuta" ColumnName="idRuta" />
+          <ScalarProperty Name="inicioRuta" ColumnName="inicioRuta" />
+          <ScalarProperty Name="finalRuta" ColumnName="finalRuta" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sucursal">
+      <EntityTypeMapping TypeName="TravelFoxModel.Sucursal">
+        <MappingFragment StoreEntitySet="Sucursal">
+          <ScalarProperty Name="idSucursal" ColumnName="idSucursal" />
+          <ScalarProperty Name="nombreSucursal" ColumnName="nombreSucursal" />
+          <ScalarProperty Name="idCompañia" ColumnName="idCompañia" />
+          <ScalarProperty Name="idDepartamento" ColumnName="idDepartamento" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Transporte">
+      <EntityTypeMapping TypeName="TravelFoxModel.Transporte">
+        <MappingFragment StoreEntitySet="Transporte">
+          <ScalarProperty Name="idTransporte" ColumnName="idTransporte" />
+          <ScalarProperty Name="nroPlaca" ColumnName="nroPlaca" />
+          <ScalarProperty Name="capacidad" ColumnName="capacidad" />
+          <ScalarProperty Name="tipoTransporte" ColumnName="tipoTransporte" />
+          <ScalarProperty Name="idRuta" ColumnName="idRuta" />
+          <ScalarProperty Name="idCompañia" ColumnName="idCompañia" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Usuario">
+      <EntityTypeMapping TypeName="TravelFoxModel.Usuario">
+        <MappingFragment StoreEntitySet="Usuario">
+          <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="idDetUsu" ColumnName="idDetUsu" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

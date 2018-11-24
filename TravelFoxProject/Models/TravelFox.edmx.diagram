@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="b6f96944c6224b47919418c4830d84ec" Name="Diagram1">
+        <EntityTypeShape EntityType="TravelFoxModel.Compañia" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TravelFoxModel.Conductor" Width="1.5" PointX="5.75" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TravelFoxModel.Departamento" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TravelFoxModel.Detalle_Usuario" Width="1.5" PointX="0.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TravelFoxModel.Ruta" Width="1.5" PointX="5.125" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TravelFoxModel.Sucursal" Width="1.5" PointX="3" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TravelFoxModel.Transporte" Width="1.5" PointX="6.375" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="TravelFoxModel.Usuario" Width="1.5" PointX="3" PointY="8" IsExpanded="true" />
+        <AssociationConnector Association="TravelFoxModel.FK__Sucursal__idComp__239E4DCF" ManuallyRouted="false" />
+        <AssociationConnector Association="TravelFoxModel.FK__Transport__idCom__1A14E395" ManuallyRouted="false" />
+        <AssociationConnector Association="TravelFoxModel.FK__Sucursal__idDepa__24927208" ManuallyRouted="false" />
+        <AssociationConnector Association="TravelFoxModel.FK__Usuario__idDetUs__1273C1CD" ManuallyRouted="false" />
+        <AssociationConnector Association="TravelFoxModel.FK__Transport__idRut__1920BF5C" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

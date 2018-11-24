@@ -1,0 +1,179 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TravelFoxModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Compañia">
+    <Key>
+      <PropertyRef Name="idCompañia" />
+    </Key>
+    <Property Name="idCompañia" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="40" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Conductor">
+    <Key>
+      <PropertyRef Name="idConductor" />
+    </Key>
+    <Property Name="idConductor" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="apellido" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="telefono" Type="int" Nullable="false" />
+    <Property Name="dni" Type="int" Nullable="false" />
+    <Property Name="fechaNac" Type="date" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Departamento">
+    <Key>
+      <PropertyRef Name="idDepartamento" />
+    </Key>
+    <Property Name="idDepartamento" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nomDepartamento" Type="varchar" MaxLength="40" Nullable="false" />
+    <Property Name="descripcion" Type="varchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Detalle_Usuario">
+    <Key>
+      <PropertyRef Name="idDetUsu" />
+    </Key>
+    <Property Name="idDetUsu" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nomUsu" Type="varchar" MaxLength="40" Nullable="false" />
+    <Property Name="apeUsu" Type="varchar" MaxLength="40" Nullable="false" />
+    <Property Name="emailUsu" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="dniUsu" Type="char" MaxLength="8" Nullable="false" />
+    <Property Name="fechaNacUsu" Type="date" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Ruta">
+    <Key>
+      <PropertyRef Name="idRuta" />
+    </Key>
+    <Property Name="idRuta" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="inicioRuta" Type="varchar" MaxLength="40" Nullable="false" />
+    <Property Name="finalRuta" Type="varchar" MaxLength="40" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Sucursal">
+    <Key>
+      <PropertyRef Name="idSucursal" />
+    </Key>
+    <Property Name="idSucursal" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombreSucursal" Type="varchar" MaxLength="40" Nullable="false" />
+    <Property Name="idCompañia" Type="int" />
+    <Property Name="idDepartamento" Type="int" />
+  </EntityType>
+  <EntityType Name="Transporte">
+    <Key>
+      <PropertyRef Name="idTransporte" />
+    </Key>
+    <Property Name="idTransporte" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nroPlaca" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="capacidad" Type="int" Nullable="false" />
+    <Property Name="tipoTransporte" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="idRuta" Type="int" />
+    <Property Name="idCompañia" Type="int" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6013: La tabla o vista 'TravelFox.dbo.TransporteConductor' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
+        <EntityType Name="TransporteConductor">
+          <Property Name="idTransporte" Type="int" />
+          <Property Name="idConductor" Type="int" />
+        </EntityType>-->
+  <EntityType Name="Usuario">
+    <Key>
+      <PropertyRef Name="idUsuario" />
+    </Key>
+    <Property Name="idUsuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="username" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="password" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="idDetUsu" Type="int" />
+  </EntityType>
+  <Association Name="FK__Sucursal__idComp__239E4DCF">
+    <End Role="Compañia" Type="Self.Compañia" Multiplicity="0..1" />
+    <End Role="Sucursal" Type="Self.Sucursal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Compañia">
+        <PropertyRef Name="idCompañia" />
+      </Principal>
+      <Dependent Role="Sucursal">
+        <PropertyRef Name="idCompañia" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Sucursal__idDepa__24927208">
+    <End Role="Departamento" Type="Self.Departamento" Multiplicity="0..1" />
+    <End Role="Sucursal" Type="Self.Sucursal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Departamento">
+        <PropertyRef Name="idDepartamento" />
+      </Principal>
+      <Dependent Role="Sucursal">
+        <PropertyRef Name="idDepartamento" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Transport__idCom__1A14E395">
+    <End Role="Compañia" Type="Self.Compañia" Multiplicity="0..1" />
+    <End Role="Transporte" Type="Self.Transporte" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Compañia">
+        <PropertyRef Name="idCompañia" />
+      </Principal>
+      <Dependent Role="Transporte">
+        <PropertyRef Name="idCompañia" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <!--Errores durante la generación:
+error 6004: Una relación hace referencia a la tabla 'TravelFox.dbo.TransporteConductor', pero no se encuentra la tabla.
+        <Association Name="FK__Transport__idCon__1ED998B2" />-->
+  <Association Name="FK__Transport__idRut__1920BF5C">
+    <End Role="Ruta" Type="Self.Ruta" Multiplicity="0..1" />
+    <End Role="Transporte" Type="Self.Transporte" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ruta">
+        <PropertyRef Name="idRuta" />
+      </Principal>
+      <Dependent Role="Transporte">
+        <PropertyRef Name="idRuta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <!--Errores durante la generación:
+error 6004: Una relación hace referencia a la tabla 'TravelFox.dbo.TransporteConductor', pero no se encuentra la tabla.
+        <Association Name="FK__Transport__idTra__1DE57479" />-->
+  <Association Name="FK__Usuario__idDetUs__1273C1CD">
+    <End Role="Detalle_Usuario" Type="Self.Detalle_Usuario" Multiplicity="0..1" />
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Detalle_Usuario">
+        <PropertyRef Name="idDetUsu" />
+      </Principal>
+      <Dependent Role="Usuario">
+        <PropertyRef Name="idDetUsu" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="TravelFoxModelStoreContainer">
+    <EntitySet Name="Compañia" EntityType="Self.Compañia" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Conductor" EntityType="Self.Conductor" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Departamento" EntityType="Self.Departamento" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Detalle_Usuario" EntityType="Self.Detalle_Usuario" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Ruta" EntityType="Self.Ruta" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Sucursal" EntityType="Self.Sucursal" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Transporte" EntityType="Self.Transporte" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Sucursal__idComp__239E4DCF" Association="Self.FK__Sucursal__idComp__239E4DCF">
+      <End Role="Compañia" EntitySet="Compañia" />
+      <End Role="Sucursal" EntitySet="Sucursal" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Sucursal__idDepa__24927208" Association="Self.FK__Sucursal__idDepa__24927208">
+      <End Role="Departamento" EntitySet="Departamento" />
+      <End Role="Sucursal" EntitySet="Sucursal" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Transport__idCom__1A14E395" Association="Self.FK__Transport__idCom__1A14E395">
+      <End Role="Compañia" EntitySet="Compañia" />
+      <End Role="Transporte" EntitySet="Transporte" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Transport__idRut__1920BF5C" Association="Self.FK__Transport__idRut__1920BF5C">
+      <End Role="Ruta" EntitySet="Ruta" />
+      <End Role="Transporte" EntitySet="Transporte" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Usuario__idDetUs__1273C1CD" Association="Self.FK__Usuario__idDetUs__1273C1CD">
+      <End Role="Detalle_Usuario" EntitySet="Detalle_Usuario" />
+      <End Role="Usuario" EntitySet="Usuario" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

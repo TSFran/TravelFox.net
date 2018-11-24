@@ -1,6 +1,6 @@
 USE master
 IF EXISTS(SELECT * FROM sys.databases WHERE name='TravelFox')
-DROP DATABASE TravelFox
+	DROP DATABASE TravelFox
 
 CREATE DATABASE TravelFox
 
@@ -60,3 +60,9 @@ idSucursal int primary key identity(1,1),
 nombreSucursal varchar(40) NOT NULL,
 idCompañia int foreign key references Compañia(idCompañia),
 idDepartamento int foreign key references Departamento(idDepartamento))
+
+INSERT INTO Detalle_Usuario VALUES('Luis', 'Tupa', 'luistupa6@gmail.com', 70056637, '13-03-1998');
+INSERT INTO Detalle_Usuario VALUES('Aaron', 'Ramos', 'aaron.daniel@gmail.com', 09332144, '13-03-1998');
+
+INSERT INTO Usuario VALUES('luis', '123456', '1');
+INSERT INTO Usuario VALUES('aaron', '123456', '2');

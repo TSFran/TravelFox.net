@@ -25,12 +25,14 @@ namespace TravelFoxProject
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
+                      "~/Content/Layout/index.css",
                       "~/Content/site.css",
                       "~/Content/c-header.css"));
 
-            /*bundles.Add(new StyleBundle("~/Content/css").Include(
+            bundles.Add(new StyleBundle("~/Content/Login").Include(
                     "~/Content/bootstrap.css",
-                      "~/Content/c-header.css"));*/
+                    "~/Content/Layout/index.css",
+                    "~/Content/Login/index.css"));
         }
     }
 }

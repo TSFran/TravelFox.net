@@ -1,0 +1,65 @@
+﻿.c-login-wrap {
+    width: 100vw;
+    height: calc(100vh);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.c-login {
+    width: 80%
+}
+
+    .c-login img {
+        display: block;
+        width: 80px;
+        height: 80px;
+        margin: 40px auto;
+    }
+
+.c-login-group {
+    margin: 5px 10px 20px;
+}
+
+.c-login__label {
+    color: #fd544a;
+    text-transform: uppercase;
+}
+
+.c-login__input {
+    width: 100%;
+    padding: 2px 4px;
+    border: none;
+    background: none;
+    border: solid;
+    border-width: 0px 0px 2px;
+    border-color: #fd544a;
+    outline: none;
+}
+
+.c-login__btn {
+    width: 100%;
+    background: white;
+    color: #fd544a;
+    font-weight: bold;
+    border-radius: 40px;
+}
+
+.c-login__register {
+    color: #fd544a;
+    font-weight: bold;
+    float: right;
+    margin-bottom: 8px;
+}
+
+.c-login__session {
+    color: red;
+    margin: 5px 10px 20px;
+}
+
+@media(min-width: 768px) {
+    .c-login {
+        width: 380px;
+    }
+}
